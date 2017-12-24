@@ -1,6 +1,23 @@
 
 import codecs
 
+# Count the name of Allah
+quran = codecs.open('../Assets/QuranText/quran-simple-clean.txt', 'r', encoding="utf-8")
+count = 0
+for ayat in quran:
+    a = ayat.split('|')
+    chapterNo   = a[0]
+    ayahNo      = a[1]
+    ayahText    = (a[2].split('\r'))[0]
+
+    if "بسم الله الرحمن الرحيم" in ayahText:
+        print("Chapter: " + str(chapterNo) + " verse: " + str(ayahNo) + ", length: " + str(len(ayahText)) + " Text: " + ayahText)
+        count = count + 1
+
+print("Total palindromes: ", count)
+
+
+'''
 # Palindrome ayahs
 quran = codecs.open('../Assets/QuranText/quran-simple-clean.txt', 'r', encoding="utf-8")
 count = 0
@@ -17,7 +34,7 @@ for ayat in quran:
         count = count + 1
 
 print("Total palindromes: ", count)
-
+'''
 
 
 '''
