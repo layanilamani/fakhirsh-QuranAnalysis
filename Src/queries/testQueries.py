@@ -5,8 +5,11 @@ import codecs
 quran = codecs.open('../../Assets/QuranText/quran-simple-clean.txt', 'r', encoding="utf-8")
 
 ayahCount = 0
-wordCount = 0
-w = 0
+uniqueWordCount = 0
+totalWordCount = 0
+
+uniqueWords = set()
+
 for ayat in quran:
     a = ayat.split('|')
     chapterNo   = a[0]
@@ -14,14 +17,17 @@ for ayat in quran:
     ayahText    = (a[2].split('\r'))[0]
 
     ayahWords   = ayahText.split(' ')
-    w += len(ayahWords)
-    uniqueWords = set(ayahWords)
     
-    wordCount += len(uniqueWords)
+    uniqueWords.update(ayahWords)
+
+    totalWordCount += len(ayahWords)    
     ayahCount += 1
 
 
+print(uniqueWords)
+uniqueWordCount += len(uniqueWords)
+
 print("Total Ayas: ", ayahCount)
-print("Total Unique Words: ", wordCount)
-print("Total Words: ", w)
+print("Total Unique Words: ", uniqueWordCount)
+print("Total Words: ", totalWordCount)
 
